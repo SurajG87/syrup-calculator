@@ -16,9 +16,10 @@
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 12px;
+            padding: 8px;
             color: #333;
             -webkit-text-size-adjust: 100%;
+            font-size: 12px;
         }
         
         .container {
@@ -28,98 +29,116 @@
         
         .header {
             text-align: center;
-            margin-bottom: 20px;
-            padding: 25px 20px;
+            margin-bottom: 12px;
+            padding: 15px 12px;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .header h1 {
             color: #2c3e50;
-            margin-bottom: 8px;
-            font-size: 19px;
+            margin-bottom: 4px;
+            font-size: 14px;
             font-weight: 600;
             line-height: 1;
         }
         
         .header p {
             color: #7f8c8d;
-            font-size: 16px;
+            font-size: 11px;
             font-weight: 500;
         }
         
         .calculator-card {
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
             overflow: hidden;
         }
         
         .card-header {
             background: #3498db;
             color: white;
-            padding: 18px 16px;
-            font-size: 17px;
+            padding: 12px 10px;
+            font-size: 12px;
             font-weight: 600;
             text-align: center;
         }
         
         .card-body {
-            padding: 20px 16px;
+            padding: 12px 10px;
         }
         
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         
         .input-group label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: #2c3e50;
-            font-size: 16px;
-            line-height: 1.4;
+            font-size: 11px;
+            line-height: 1.2;
         }
         
         .input-group input {
             width: 100%;
-            padding: 16px 14px;
-            border: 2px solid #e1e8ed;
-            border-radius: 12px;
-            font-size: 18px;
+            padding: 10px 8px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 12px;
             transition: all 0.3s;
             background: #f8f9fa;
             -webkit-appearance: none;
-            min-height: 56px;
+            min-height: 36px;
+            color: #333;
         }
         
         .input-group input:focus {
             outline: none;
             border-color: #3498db;
             background: white;
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
         }
         
         .input-group input::placeholder {
             color: #a0a0a0;
-            font-size: 16px;
+            font-size: 11px;
+        }
+        
+        /* Light Green Final Syrup Input */
+        .final-syrup-input {
+            background: #58D68D !important;
+            color: white !important;
+            border-color: #48C17C !important;
+        }
+        
+        .final-syrup-input::placeholder {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .final-syrup-input:focus {
+            background: #48C17C !important;
+            border-color: #38B16C !important;
+            box-shadow: 0 0 0 2px rgba(88, 214, 141, 0.4) !important;
         }
         
         .results {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 16px;
+            gap: 8px;
+            margin-top: 12px;
         }
         
         .result-box {
             background: #f8f9fa;
-            padding: 18px 16px;
-            border-radius: 12px;
-            border-left: 5px solid #3498db;
-            min-height: 80px;
+            padding: 12px 10px;
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+            min-height: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -127,34 +146,34 @@
         
         .result-title {
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: #2c3e50;
-            font-size: 15px;
+            font-size: 11px;
             text-align: center;
-            line-height: 1.3;
+            line-height: 1.2;
         }
         
         .result-value {
-            font-size: 18px;
+            font-size: 12px;
             font-weight: 700;
             color: #e74c3c;
             text-align: center;
-            line-height: 1.3;
+            line-height: 1.2;
         }
         
         .method-box {
             background: #f8f9fa;
-            padding: 20px 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            border-left: 5px solid #2ecc71;
+            padding: 12px 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #2ecc71;
         }
         
         .method-title {
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             color: #2c3e50;
-            font-size: 18px;
+            font-size: 12px;
             text-align: center;
         }
         
@@ -164,39 +183,75 @@
         }
         
         .method-steps li {
-            margin-bottom: 12px;
-            line-height: 1.5;
-            font-size: 15px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            font-size: 11px;
             color: #34495e;
-            padding-left: 20px;
+            padding-left: 14px;
             position: relative;
         }
         
         .method-steps li:before {
             content: "•";
             color: #3498db;
-            font-size: 20px;
+            font-size: 14px;
             position: absolute;
             left: 0;
             top: -1px;
         }
         
         .info-text {
-            font-size: 14px;
+            font-size: 10px;
             color: #7f8c8d;
-            margin-top: 6px;
+            margin-top: 4px;
             font-style: italic;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.2;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px 10px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+        
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        
+        .instagram-link::before {
+            content: "📷";
+            font-size: 10px;
         }
         
         /* iPhone notch safe areas */
         @supports (padding: max(0px)) {
             body {
-                padding-left: max(12px, env(safe-area-inset-left));
-                padding-right: max(12px, env(safe-area-inset-right));
-                padding-top: max(12px, env(safe-area-inset-top));
-                padding-bottom: max(12px, env(safe-area-inset-bottom));
+                padding-left: max(8px, env(safe-area-inset-left));
+                padding-right: max(8px, env(safe-area-inset-right));
+                padding-top: max(8px, env(safe-area-inset-top));
+                padding-bottom: max(8px, env(safe-area-inset-bottom));
             }
         }
         
@@ -213,46 +268,60 @@
         
         /* Animation for better UX */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         .calculator-card {
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeIn 0.3s ease-out;
         }
         
-        /* Small phone optimization */
+        /* Extra small optimization */
         @media (max-width: 360px) {
             body {
-                padding: 8px;
+                padding: 6px;
+                font-size: 11px;
             }
             
             .header {
-                padding: 20px 16px;
-                margin-bottom: 16px;
+                padding: 12px 10px;
+                margin-bottom: 8px;
             }
             
             .header h1 {
+                font-size: 12px;
+            }
+            
+            .header p {
                 font-size: 10px;
             }
             
             .card-body {
-                padding: 16px 12px;
+                padding: 10px 8px;
             }
             
             .input-group input {
-                padding: 14px 12px;
-                font-size: 16px;
-                min-height: 52px;
+                padding: 8px 6px;
+                font-size: 11px;
+                min-height: 32px;
             }
             
             .result-box {
-                padding: 16px 12px;
-                min-height: 70px;
+                padding: 10px 8px;
+                min-height: 45px;
             }
             
             .method-box {
-                padding: 16px 12px;
+                padding: 10px 8px;
+            }
+            
+            .method-steps li {
+                font-size: 10px;
+            }
+            
+            .footer {
+                padding: 12px 8px;
+                font-size: 10px;
             }
         }
     </style>
@@ -260,7 +329,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Gum / Syrup Calculator </h1>
+            <h1>Gum / Syrup Calculator</h1>
             <p>Calculate ingredients for perfect syrups every time</p>
         </div>
         
@@ -296,7 +365,7 @@
                 
                 <div class="input-group">
                     <label for="finalSyrup">For Gum Syrup - weigh Syrup after sugar is added</label>
-                    <input type="number" id="finalSyrup" placeholder="Enter final syrup weight" min="0" inputmode="decimal">
+                    <input type="number" id="finalSyrup" class="final-syrup-input" placeholder="Enter final syrup weight" min="0" inputmode="decimal">
                     <div class="info-text">Note: This is used for citric acid calculation only</div>
                 </div>
                 
@@ -343,6 +412,14 @@
                         <li>Check for signs of spoilage before use. When in doubt, always discard and make a new batch</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div> by </div>
+            <div class="instagram-link">
+                <a href="https://www.instagram.com/suraj.gg87/" target="_blank">@suraj.gg87</a>
             </div>
         </div>
     </div>
