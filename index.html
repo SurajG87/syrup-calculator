@@ -31,6 +31,10 @@
         .container {
             max-width: 100%;
             margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
         
         .header {
@@ -38,8 +42,6 @@
             margin-bottom: 12px;
             padding: 15px 12px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             position: relative;
         }
         
@@ -127,8 +129,6 @@
         
         .calculator-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             margin-bottom: 10px;
             overflow: hidden;
         }
@@ -139,7 +139,7 @@
             padding: 12px 10px;
             font-size: 12px;
             font-weight: 600;
-            text-align: center;
+            text-align: left;
         }
         
         .card-body {
@@ -157,6 +157,7 @@
             color: #2c3e50;
             font-size: 11px;
             line-height: 1.2;
+            text-align: left;
         }
         
         .input-group input {
@@ -224,7 +225,7 @@
             margin-bottom: 4px;
             color: #2c3e50;
             font-size: 11px;
-            text-align: center;
+            text-align: left;
             line-height: 1.2;
         }
         
@@ -232,7 +233,7 @@
             font-size: 12px;
             font-weight: 700;
             color: #e74c3c;
-            text-align: center;
+            text-align: left;
             line-height: 1.2;
         }
         
@@ -249,7 +250,7 @@
             margin-bottom: 10px;
             color: #2c3e50;
             font-size: 12px;
-            text-align: center;
+            text-align: left;
         }
         
         .method-steps {
@@ -264,6 +265,7 @@
             color: #34495e;
             padding-left: 14px;
             position: relative;
+            text-align: left;
         }
         
         .method-steps li:before {
@@ -280,7 +282,7 @@
             color: #7f8c8d;
             margin-top: 4px;
             font-style: italic;
-            text-align: center;
+            text-align: left;
             line-height: 1.2;
         }
         
@@ -495,6 +497,7 @@
             <div class="card-header">Preparation Method for GUM SYRUP</div>
             <div class="card-body">
                 <div class="method-box">
+                    <div class="method-title">Steps:</div>
                     <ul class="method-steps">
                         <li>Get all the ingredients ready</li>
                         <li>Add the juice to the blender on low speed</li>
@@ -511,6 +514,7 @@
             <div class="card-header">Preparation Method for Regular Syrup</div>
             <div class="card-body">
                 <div class="method-box">
+                    <div class="method-title">Steps:</div>
                     <ul class="method-steps">
                         <li>Heat your liquid and the additional sugar over gentle heat on a stovetop or in a microwave, and stir just until the sugar is dissolved and everything is combined</li>
                         <li>Allow the mixture to cool at room temperature, then portion into squeeze bottles, and clearly label and date all bottles</li>
