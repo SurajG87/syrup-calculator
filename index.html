@@ -725,14 +725,7 @@
                     }
                     deferredPrompt = null;
                 });
-            } else {
-                // For iOS, show instructions
-                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                    alert('To add this app to your home screen, tap the share button and then "Add to Home Screen".');
-                } else if (/Android/i.test(navigator.userAgent)) {
-                    alert('To add this app to your home screen, open the browser menu and tap "Add to Home Screen".');
-                }
-            }
+           
             addToHomePrompt.style.display = 'none';
         });
     </script>
