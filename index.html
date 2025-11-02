@@ -354,57 +354,9 @@
             font-size: 10px;
         }
         
-        /* Add to Home Screen Prompt */
-        .add-to-home-prompt {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 10px;
-            display: none;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            max-width: 90%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
+       
         
-        .add-to-home-prompt .app-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .add-to-home-prompt .app-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-        
-        .add-to-home-prompt .prompt-text {
-            flex: 1;
-            font-size: 13px;
-        }
-        
-        .add-to-home-prompt .close-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+       
         
         /* iPhone notch safe areas */
         @supports (padding: max(0px)) {
@@ -645,17 +597,7 @@
         </div>
     </div>
 
-    <!-- Add to Home Screen Prompt -->
-    <div class="add-to-home-prompt" id="addToHomePrompt">
-        <div class="app-icon">
-            <svg viewBox="0 0 24 24" fill="white">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8 14H7v-2h4v2zm0-4H7v-2h4v2zm0-4H7V7h4v2zm6 8h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V7h4v2z"/>
-            </svg>
-        </div>
-        <div class="prompt-text">Add Syrup Calculator to Home Screen</div>
-        <button class="close-btn" id="closePrompt">×</button>
-    </div>
-
+   
     <script>
         // Get input elements
         const liquidWeightInput = document.getElementById('liquidWeight');
@@ -726,73 +668,8 @@
             const citricAcid = finalSyrup * 0.003;
             citricAcidElement.textContent = `${citricAcid.toFixed(2)} grams`;
         }
-        
-        // Initialize calculations
-        calculateAll();
-        
-        // Add to Home Screen functionality
-        const addToHomePrompt = document.getElementById('addToHomePrompt');
-        const closePrompt = document.getElementById('closePrompt');
-        
-        // Show prompt for mobile devices
-        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            // Check if the app is already installed
-            if (window.matchMedia('(display-mode: standalone)').matches) {
-                // App is already installed, hide prompt
-                addToHomePrompt.style.display = 'none';
-            } else {
-                // Show prompt after a delay
-                setTimeout(() => {
-                    addToHomePrompt.style.display = 'flex';
-                }, 3000);
-            }
-        }
-        
-        // Close prompt when X is clicked
-        closePrompt.addEventListener('click', () => {
-            addToHomePrompt.style.display = 'none';
-        });
-        
-        // Before install prompt for PWA
-        let deferredPrompt;
-        
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
-            // Show our custom prompt
-            addToHomePrompt.style.display = 'flex';
-            
-            // Update the prompt text for PWA
-            const promptText = document.querySelector('.prompt-text');
-            promptText.textContent = 'Install Syrup Calculator App';
-        });
-        
-        // Handle the install prompt
-        addToHomePrompt.addEventListener('click', () => {
-            if (deferredPrompt) {
-                // Show the install prompt
-                deferredPrompt.prompt();
-                // Wait for the user to respond to the prompt
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    } else {
-                        console.log('User dismissed the install prompt');
-                    }
-                    deferredPrompt = null;
-                });
-            } else {
-                // For iOS, show instructions
-                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                    alert('To add this app to your home screen, tap the share button and then "Add to Home Screen".');
-                } else if (/Android/i.test(navigator.userAgent)) {
-                    alert('To add this app to your home screen, open the browser menu and tap "Add to Home Screen".');
-                }
-            }
-            addToHomePrompt.style.display = 'none';
-        });
+   
+       
     </script>
 </body>
 </html>
