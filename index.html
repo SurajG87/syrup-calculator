@@ -10,12 +10,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMzNDk4REIiIHJ4PSI2Ii8+PHBhdGggZD0iTTEyIDhIMjBWMjBIMTJWOFoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTE2IDEwSDE0VjE4SDE2VjE2SDE4VjE0SDE2VjEwWiIgZmlsbD0iIzM0OThEQiIvPjxjaXJjbGUgY3g9IjI0IiBjeT0iOCIgcj0iNCIgZmlsbD0iI0U3NEMzQyIvPjwvc3ZnPg==">
     <link rel="icon" type="image/png" sizes="16x16" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9IiMzNDk4REIiIHJ4PSIzIi8+PHBhdGggZD0iTTYgNEgxMFYxMkg2VjRaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik04IDVIN1Y5SDhWOFY5SDlWOEg4VjVaIiBmaWxsPSIjMzQ5OERCIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI0IiByPSIyIiBmaWxsPSIjRTc0QzNDIi8+PC9zdmc+">
     
-    <!-- Add to Home Screen Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Syrup Calculator">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#3498db">
     
     <style>
         * {
@@ -29,84 +23,84 @@
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            padding: 10px;
+            padding: 20px;
             color: #333;
             -webkit-text-size-adjust: 100%;
             font-size: 12px;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
         }
         
         .main-container {
             width: 100%;
             max-width: 400px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             overflow: hidden;
         }
         
         .header {
             text-align: center;
-            padding: 15px 12px;
+            padding: 20px 15px;
             background: white;
             position: relative;
             border-bottom: 1px solid #f0f0f0;
         }
         
         .app-logo {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 8px auto;
-            border-radius: 12px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px auto;
+            border-radius: 20px;
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
         }
         
         .calculator-icon {
-            width: 35px;
-            height: 35px;
+            width: 50px;
+            height: 50px;
             position: relative;
         }
         
         .calc-screen {
             position: absolute;
-            top: 3px;
-            left: 4px;
-            right: 4px;
-            height: 8px;
+            top: 4px;
+            left: 5px;
+            right: 5px;
+            height: 12px;
             background: #2c3e50;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
         .calc-buttons {
             position: absolute;
-            bottom: 3px;
-            left: 4px;
-            right: 4px;
+            bottom: 4px;
+            left: 5px;
+            right: 5px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
+            gap: 3px;
         }
         
         .calc-button {
-            height: 4px;
+            height: 6px;
             background: white;
             border-radius: 1px;
         }
         
         .fruit-decoration {
             position: absolute;
-            top: -6px;
-            right: -6px;
-            width: 20px;
-            height: 20px;
+            top: -8px;
+            right: -8px;
+            width: 30px;
+            height: 30px;
             background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
             border-radius: 50%;
             transform: rotate(15deg);
@@ -115,25 +109,25 @@
         .fruit-decoration::before {
             content: "";
             position: absolute;
-            top: -3px;
-            left: 8px;
-            width: 3px;
-            height: 6px;
+            top: -4px;
+            left: 12px;
+            width: 4px;
+            height: 8px;
             background: #27ae60;
-            border-radius: 1px;
+            border-radius: 2px;
         }
         
         .header h1 {
             color: #2c3e50;
-            margin-bottom: 4px;
-            font-size: 16px;
+            margin-bottom: 6px;
+            font-size: 18px;
             font-weight: 700;
             line-height: 1;
         }
         
         .header p {
             color: #7f8c8d;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 500;
         }
         
@@ -145,8 +139,8 @@
         .card-header {
             background: #3498db;
             color: white;
-            padding: 10px 12px;
-            font-size: 12px;
+            padding: 14px 15px;
+            font-size: 13px;
             font-weight: 600;
             text-align: left;
             cursor: pointer;
@@ -162,7 +156,7 @@
         
         .card-header .arrow {
             transition: transform 0.3s;
-            font-size: 12px;
+            font-size: 14px;
         }
         
         .card-header.active .arrow {
@@ -170,33 +164,33 @@
         }
         
         .card-body {
-            padding: 12px;
+            padding: 15px;
         }
         
         .input-group {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         
         .input-group label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
             color: #2c3e50;
-            font-size: 11px;
+            font-size: 12px;
             line-height: 1.2;
             text-align: left;
         }
         
         .input-group input {
             width: 100%;
-            padding: 10px 8px;
+            padding: 12px 10px;
             border: 1px solid #e1e8ed;
-            border-radius: 6px;
-            font-size: 12px;
+            border-radius: 8px;
+            font-size: 13px;
             transition: all 0.3s;
             background: #f8f9fa;
             -webkit-appearance: none;
-            min-height: 36px;
+            min-height: 40px;
             color: #333;
         }
         
@@ -209,7 +203,7 @@
         
         .input-group input::placeholder {
             color: #a0a0a0;
-            font-size: 11px;
+            font-size: 12px;
         }
         
         /* Light Green Final Syrup Input */
@@ -232,16 +226,16 @@
         .results {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 12px;
+            gap: 10px;
+            margin-top: 15px;
         }
         
         .result-box {
             background: #f8f9fa;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 14px 12px;
+            border-radius: 8px;
             border-left: 3px solid #3498db;
-            min-height: 45px;
+            min-height: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -249,15 +243,15 @@
         
         .result-title {
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             color: #2c3e50;
-            font-size: 11px;
+            font-size: 12px;
             text-align: left;
             line-height: 1.2;
         }
         
         .result-value {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: #e74c3c;
             text-align: left;
@@ -266,9 +260,9 @@
         
         .method-box {
             background: #f8f9fa;
-            padding: 12px 10px;
-            border-radius: 6px;
-            margin-bottom: 8px;
+            padding: 15px 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
             border-left: 3px solid #2ecc71;
             display: none;
             animation: slideDown 0.3s ease-out;
@@ -280,9 +274,9 @@
         
         .method-title {
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             color: #2c3e50;
-            font-size: 12px;
+            font-size: 13px;
             text-align: left;
         }
         
@@ -292,11 +286,11 @@
         }
         
         .method-steps li {
-            margin-bottom: 8px;
-            line-height: 1.3;
-            font-size: 11px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-size: 12px;
             color: #34495e;
-            padding-left: 14px;
+            padding-left: 16px;
             position: relative;
             text-align: left;
         }
@@ -304,29 +298,29 @@
         .method-steps li:before {
             content: "•";
             color: #3498db;
-            font-size: 14px;
+            font-size: 16px;
             position: absolute;
             left: 0;
             top: -1px;
         }
         
         .info-text {
-            font-size: 10px;
+            font-size: 11px;
             color: #7f8c8d;
-            margin-top: 4px;
+            margin-top: 5px;
             font-style: italic;
             text-align: left;
-            line-height: 1.2;
+            line-height: 1.3;
         }
         
         /* Subtle Attribution */
         .attribution {
             text-align: center;
-            margin-top: 12px;
-            padding: 10px;
-            font-size: 10px;
+            margin-top: 15px;
+            padding: 12px;
+            font-size: 11px;
             color: #7f8c8d;
-            line-height: 1.2;
+            line-height: 1.3;
             border-top: 1px solid #f0f0f0;
         }
         
@@ -350,31 +344,31 @@
         
         .instagram-handle::before {
             content: "📷";
-            font-size: 9px;
+            font-size: 10px;
         }
         
         /* Add to Home Screen Prompt */
         .add-to-home-prompt {
             position: fixed;
-            bottom: 15px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 10px 14px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 10px;
             display: none;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             z-index: 1000;
             max-width: 90%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
         .add-to-home-prompt .app-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             display: flex;
             align-items: center;
@@ -382,24 +376,24 @@
         }
         
         .add-to-home-prompt .app-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
         
         .add-to-home-prompt .prompt-text {
             flex: 1;
-            font-size: 12px;
+            font-size: 13px;
         }
         
         .add-to-home-prompt .close-btn {
             background: none;
             border: none;
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             padding: 0;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -408,10 +402,10 @@
         /* iPhone notch safe areas */
         @supports (padding: max(0px)) {
             body {
-                padding-left: max(10px, env(safe-area-inset-left));
-                padding-right: max(10px, env(safe-area-inset-right));
-                padding-top: max(10px, env(safe-area-inset-top));
-                padding-bottom: max(10px, env(safe-area-inset-bottom));
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+                padding-top: max(20px, env(safe-area-inset-top));
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
             }
         }
         
@@ -433,7 +427,7 @@
         }
         
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-8px); }
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
@@ -444,7 +438,7 @@
         /* Logo animation */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-3px) rotate(2deg); }
+            50% { transform: translateY(-5px) rotate(2deg); }
         }
         
         .app-logo {
@@ -454,74 +448,72 @@
         /* Desktop-specific styling */
         @media (min-width: 768px) {
             body {
-                padding: 20px;
-                align-items: center;
+                padding: 40px 20px;
             }
             
             .main-container {
                 max-width: 420px;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.15);
             }
         }
         
         /* Extra small optimization */
         @media (max-width: 360px) {
             body {
-                padding: 8px;
+                padding: 15px 10px;
             }
             
             .main-container {
                 max-width: 100%;
-                border-radius: 10px;
             }
             
             .header {
-                padding: 12px 10px;
+                padding: 15px 12px;
             }
             
             .header h1 {
-                font-size: 15px;
+                font-size: 16px;
             }
             
             .header p {
-                font-size: 10px;
+                font-size: 12px;
             }
             
             .app-logo {
-                width: 55px;
-                height: 55px;
+                width: 70px;
+                height: 70px;
             }
             
             .calculator-icon {
-                width: 32px;
-                height: 32px;
+                width: 40px;
+                height: 40px;
             }
             
             .card-body {
-                padding: 10px;
+                padding: 12px 10px;
             }
             
             .input-group input {
-                padding: 8px 6px;
-                font-size: 11px;
-                min-height: 34px;
+                padding: 10px 8px;
+                font-size: 12px;
+                min-height: 36px;
             }
             
             .result-box {
-                padding: 8px;
-                min-height: 40px;
+                padding: 12px 10px;
+                min-height: 45px;
             }
             
             .method-box {
-                padding: 10px 8px;
+                padding: 12px 10px;
             }
             
             .method-steps li {
-                font-size: 10px;
+                font-size: 11px;
             }
             
             .attribution {
-                font-size: 9px;
+                font-size: 10px;
             }
         }
     </style>
@@ -797,3 +789,4 @@
     </script>
 </body>
 </html>
+
