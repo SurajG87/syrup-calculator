@@ -1,560 +1,674 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Apple Touch Icon (the main one for home screen) -->
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Optional: Prevents zooming when launching from home screen -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Syrup Brix Calculator | Sugar, Gum, Citric & Ascorbic Acid</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gum / Syrup Calculator - Suraj</title>
+    
+    <!-- Dynamic App Logo for Home Screen -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxODAiIGZpbGw9IiMzNDk4REIiIHJ4PSIzNiIvPjxwYXRoIGQ9Ik03MCA1MEg1MFY3MEg3MFY5MEg5MFY3MEgxMTBWNTAIOTBWNzBINzBWNTBaIiBmaWxsPSJ3aGl0ZSIvPjxjaXJjbGUgY3g9IjEzNSIgY3k9IjQ1IiByPSIxNSIgZmlsbD0iI0U3NEMzQyIvPjxwYXRoIGQ9Ik0xMzUgMzVMMTM1IDM1TDEzOCAzOEwxMzUgMzVaIiBmaWxsPSIjMjdBRTYwIi8+PC9zdmc+">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIGZpbGw9IiMzNDk4REIiIHJ4PSI2Ii8+PHBhdGggZD0iTTEyIDhIMjBWMjBIMTJWOFoiIGZpbGw9IndoaXRlIi8+PHBhdGggZD0iTTE2IDEwSDE0VjE4SDE2VjE2SDE4VjE0SDE2VjEwWiIgZmlsbD0iIzM0OThEQiIvPjxjaXJjbGUgY3g9IjI0IiBjeT0iOCIgcj0iNCIgZmlsbD0iI0U3NEMzQyIvPjwvc3ZnPg==">
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9IiMzNDk4REIiIHJ4PSIzIi8+PHBhdGggZD0iTTYgNEgxMFYxMkg2VjRaIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik04IDVIN1Y5SDhWOFY5SDlWOEg4VjVaIiBmaWxsPSIjMzQ5OERCIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI0IiByPSIyIiBmaWxsPSIjRTc0QzNDIi8+PC9zdmc+">
+    
+    
     <style>
         * {
-            box-sizing: border-box;
-            font-family: system-ui, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #e6f0ff 0%, #b8d4ff 100%);
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            -webkit-text-size-adjust: 100%;
+            font-size: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1.5rem;
         }
-
-        .card {
-            max-width: 900px;
+        
+        .main-container {
             width: 100%;
+            max-width: 400px;
             background: white;
-            border-radius: 2rem;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
             overflow: hidden;
-            transition: all 0.2s ease;
         }
-
+        
         .header {
-            background: linear-gradient(135deg, #2c7da0 0%, #1f5e7e 100%);
-            padding: 1.8rem 2rem;
-            color: white;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-weight: 700;
-            font-size: 1.9rem;
-            letter-spacing: -0.3px;
-        }
-
-        .header p {
-            margin: 0.5rem 0 0;
-            opacity: 0.92;
-            font-size: 0.95rem;
-        }
-
-        .content {
-            padding: 2rem 2rem 1.5rem;
-            background: #ffffff;
-        }
-
-        .input-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .input-field {
-            flex: 1;
-            min-width: 180px;
-        }
-
-        .input-field label {
-            display: block;
-            font-weight: 700;
-            color: #1e4a6b;
-            margin-bottom: 0.5rem;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-
-        .input-field input {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            font-size: 1rem;
-            border: 2px solid #cce4f0;
-            border-radius: 1.2rem;
+            text-align: center;
+            padding: 20px 15px;
             background: white;
-            transition: 0.2s;
-            font-weight: 500;
-            color: #0a2f44;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
         }
-
-        .input-field input:focus {
-            outline: none;
-            border-color: #2c7da0;
-            box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.15);
-        }
-
-        .input-field input::placeholder {
-            color: #b8cbd9;
-            font-weight: 400;
-        }
-
-        .target-row {
+        
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px auto;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
             display: flex;
-            align-items: flex-end;
-            gap: 1rem;
-            flex-wrap: wrap;
-            background: #eef7ff;
-            padding: 1.2rem 1.5rem;
-            border-radius: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #cde3f0;
-        }
-
-        .target-row .input-field {
-            margin-bottom: 0;
-        }
-
-        .preset-buttons {
-            display: flex;
-            gap: 0.7rem;
             align-items: center;
-            margin-bottom: 0.25rem;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
         }
-
-        .preset-btn {
-            background: #d4e8f5;
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #1c5a7a;
+        
+        .calculator-icon {
+            width: 50px;
+            height: 50px;
+            position: relative;
         }
-
-        .preset-btn:hover {
-            background: #b8d9f0;
-            transform: scale(0.97);
+        
+        .calc-screen {
+            position: absolute;
+            top: 4px;
+            left: 5px;
+            right: 5px;
+            height: 12px;
+            background: #2c3e50;
+            border-radius: 3px;
         }
-
-        .calc-btn {
-            background: linear-gradient(135deg, #2c7da0 0%, #236b8e 100%);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 1rem;
-            font-size: 1.1rem;
+        
+        .calc-buttons {
+            position: absolute;
+            bottom: 4px;
+            left: 5px;
+            right: 5px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+        }
+        
+        .calc-button {
+            height: 6px;
+            background: white;
+            border-radius: 1px;
+        }
+        
+        .fruit-decoration {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 50%;
+            transform: rotate(15deg);
+        }
+        
+        .fruit-decoration::before {
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: 12px;
+            width: 4px;
+            height: 8px;
+            background: #27ae60;
+            border-radius: 2px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 6px;
+            font-size: 18px;
             font-weight: 700;
-            border-radius: 2rem;
-            margin: 0.75rem 0 1.8rem;
+            line-height: 1;
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .calculator-card {
+            background: white;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: #3498db;
+            color: white;
+            padding: 14px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: left;
             cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(44, 125, 160, 0.3);
-        }
-
-        .calc-btn:hover {
-            background: linear-gradient(135deg, #236b8e 0%, #1a5978 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(44, 125, 160, 0.4);
-        }
-
-        .results {
-            background: #f8fcff;
-            border-radius: 1.5rem;
-            padding: 0.2rem 0 0.8rem;
-            border: 1px solid #cde3f0;
-        }
-
-        .result-item {
+            transition: background-color 0.3s;
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            padding: 1rem 1.6rem;
-            border-bottom: 1px solid #e2eff9;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            align-items: center;
         }
-
-        .result-item:last-child {
-            border-bottom: none;
+        
+        .card-header:hover {
+            background: #2980b9;
         }
-
-        .result-label {
-            font-weight: 700;
-            color: #1e5779;
-            font-size: 0.95rem;
+        
+        .card-header .arrow {
+            transition: transform 0.3s;
+            font-size: 14px;
         }
-
+        
+        .card-header.active .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .card-body {
+            padding: 15px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 12px;
+            line-height: 1.2;
+            text-align: left;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 10px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 13px;
+            transition: all 0.3s;
+            background: #f8f9fa;
+            -webkit-appearance: none;
+            min-height: 40px;
+            color: #333;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+        }
+        
+        .input-group input::placeholder {
+            color: #a0a0a0;
+            font-size: 12px;
+        }
+        
+        /* Light Green Final Syrup Input */
+        .final-syrup-input {
+            background: #58D68D !important;
+            color: white !important;
+            border-color: #48C17C !important;
+        }
+        
+        .final-syrup-input::placeholder {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+        
+        .final-syrup-input:focus {
+            background: #48C17C !important;
+            border-color: #38B16C !important;
+            box-shadow: 0 0 0 2px rgba(88, 214, 141, 0.4) !important;
+        }
+        
+        .results {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .result-box {
+            background: #f8f9fa;
+            padding: 14px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+            min-height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-size: 12px;
+            text-align: left;
+            line-height: 1.2;
+        }
+        
         .result-value {
-            font-family: 'SF Mono', 'JetBrains Mono', monospace;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #0f5b83;
-            background: #e6f3fc;
-            padding: 0.3rem 1rem;
-            border-radius: 2rem;
+            font-size: 13px;
+            font-weight: 700;
+            color: #e74c3c;
+            text-align: left;
+            line-height: 1.2;
         }
-
-        .result-value.zero-value {
-            color: #9bb7cc;
-            background: #f0f5fa;
+        
+        .method-box {
+            background: #f8f9fa;
+            padding: 15px 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #2ecc71;
+            display: none;
+            animation: slideDown 0.3s ease-out;
         }
-
-        .subnote {
-            font-size: 0.7rem;
-            color: #5c8aa8;
-            margin-top: 0.2rem;
-            text-align: right;
+        
+        .method-box.active {
+            display: block;
         }
-
-        /* Subtle Attribution Styles */
+        
+        .method-title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            font-size: 13px;
+            text-align: left;
+        }
+        
+        .method-steps {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .method-steps li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-size: 12px;
+            color: #34495e;
+            padding-left: 16px;
+            position: relative;
+            text-align: left;
+        }
+        
+        .method-steps li:before {
+            content: "•";
+            color: #3498db;
+            font-size: 16px;
+            position: absolute;
+            left: 0;
+            top: -1px;
+        }
+        
+        .info-text {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-style: italic;
+            text-align: left;
+            line-height: 1.3;
+        }
+        
+        /* Subtle Attribution */
         .attribution {
-            background: linear-gradient(135deg, #f0f7fc 0%, #e6f0f7 100%);
-            padding: 0.9rem 1.5rem;
-            border-top: 1px solid #cde3f0;
             text-align: center;
+            margin-top: 15px;
+            padding: 12px;
+            font-size: 11px;
+            color: #7f8c8d;
+            line-height: 1.3;
+            border-top: 1px solid #f0f0f0;
         }
-
-        .instagram-handle {
-            font-size: 0.85rem;
+        
+        .attribution a {
+            color: #3498db;
+            text-decoration: none;
             font-weight: 500;
         }
-
-        .instagram-handle a {
-            color: #2c7da0;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .instagram-handle a:hover {
-            color: #1f5e7e;
+        
+        .attribution a:hover {
+            color: #2980b9;
             text-decoration: underline;
         }
-
-        @media (max-width: 600px) {
-            .content {
-                padding: 1.5rem;
+        
+        .instagram-handle {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        
+        .instagram-handle::before {
+            content: "📷";
+            font-size: 10px;
+        }
+        
+       
+        
+       
+        
+        /* iPhone notch safe areas */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+                padding-top: max(20px, env(safe-area-inset-top));
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
             }
-            .result-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 0.8rem 1.2rem;
+        }
+        
+        /* Hide number input spinners on mobile */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        
+        /* Animation for better UX */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .main-container {
+            animation: fadeIn 0.4s ease-out;
+        }
+        
+        /* Logo animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(2deg); }
+        }
+        
+        .app-logo {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Desktop-specific styling */
+        @media (min-width: 768px) {
+            body {
+                padding: 40px 20px;
             }
-            .result-value {
-                align-self: flex-start;
+            
+            .main-container {
+                max-width: 420px;
+                box-shadow: 0 12px 30px rgba(0,0,0,0.15);
             }
+        }
+        
+        /* Extra small optimization */
+        @media (max-width: 360px) {
+            body {
+                padding: 15px 10px;
+            }
+            
+            .main-container {
+                max-width: 100%;
+            }
+            
+            .header {
+                padding: 15px 12px;
+            }
+            
+            .header h1 {
+                font-size: 16px;
+            }
+            
+            .header p {
+                font-size: 12px;
+            }
+            
+            .app-logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .calculator-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .card-body {
+                padding: 12px 10px;
+            }
+            
+            .input-group input {
+                padding: 10px 8px;
+                font-size: 12px;
+                min-height: 36px;
+            }
+            
+            .result-box {
+                padding: 12px 10px;
+                min-height: 45px;
+            }
+            
+            .method-box {
+                padding: 12px 10px;
+            }
+            
+            .method-steps li {
+                font-size: 11px;
+            }
+            
             .attribution {
-                padding: 0.7rem 1rem;
+                font-size: 10px;
             }
         }
     </style>
 </head>
 <body>
-<div class="card">
-    <div class="header">
-        <h1>🍯 Brix Calculator 🐑</h1>
-        <p>Target Brix · Sugar addition · Gum, Citric & Ascorbic acids</p>
-    </div>
-    <div class="content">
-        <div class="input-group">
-            <div class="input-field">
-                <label>🍇 Initial juice weight (g)</label>
-                <input type="number" id="juiceWeight" step="any" placeholder="Enter juice weight">
+    <div class="main-container">
+        <div class="header">
+            <div class="app-logo">
+                <div class="calculator-icon">
+                    <div class="calc-screen"></div>
+                    <div class="calc-buttons">
+                        <div class="calc-button"></div>
+                        <div class="calc-button"></div>
+                        <div class="calc-button"></div>
+                        <div class="calc-button"></div>
+                        <div class="calc-button"></div>
+                        <div class="calc-button"></div>
+                    </div>
+                </div>
+                <div class="fruit-decoration"></div>
             </div>
-            <div class="input-field">
-                <label>📊 Initial Brix (°Bx)</label>
-                <input type="number" id="initialBrix" step="any" placeholder="Enter initial Brix">
+            <h1>Gum / Syrup Calculator</h1>
+            <p>Calculate ingredients for perfect syrups every time</p>
+        </div>
+        
+        <div class="calculator-card">
+            <div class="card-header">1: Weigh Your Liquid & Measure Initial Brix %</div>
+            <div class="card-body">
+                <div class="input-group">
+                    <label for="liquidWeight">Liquid Weight (grams)</label>
+                    <input type="number" id="liquidWeight" placeholder="Enter liquid weight" min="0" inputmode="decimal">
+                </div>
+                
+                <div class="input-group">
+                    <label for="initialBrix">Initial Brix (%)</label>
+                    <input type="number" id="initialBrix" placeholder="Enter brix percentage" min="0" max="100" step="0.1" inputmode="decimal">
+                </div>
             </div>
         </div>
-
-        <div class="target-row">
-            <div class="input-field" style="flex:2">
-                <label>🎯 Target Brix (°Bx)</label>
-                <input type="number" id="targetBrix" step="any" placeholder="Enter target Brix">
-            </div>
-            <div class="preset-buttons">
-                <button class="preset-btn" data-brix="50">🍬 1:1 Simple (50 Bx)</button>
-                <button class="preset-btn" data-brix="66">🍯 2:1 Rich (~66 Bx)</button>
-            </div>
-        </div>
-
-        <!-- Manual final syrup weight input - required for gum & acids -->
-        <div class="input-field" style="margin-bottom: 1rem;">
-            <label>⚖️ Final syrup weight (g) — <span style="color:#d9534f;">required for gum & acids</span></label>
-            <input type="number" id="finalSyrupManual" step="any" placeholder="Enter final syrup weight">
-            <div class="subnote" style="margin-top: 4px;">Gum, Citric acid & Ascorbic acid will calculate only after you enter final syrup weight.</div>
-        </div>
-
-        <button class="calc-btn" id="calculateBtn">✨ Calculate complete recipe</button>
-
-        <div class="results" id="resultsPanel">
-            <div class="result-item">
-                <span class="result-label">🍬 Pre-existing sugar in juice:</span>
-                <span class="result-value" id="existingSugar">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">💧 Juice water mass (without sugar):</span>
-                <span class="result-value" id="waterMass">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">🍚 Sugar to add (for target Brix):</span>
-                <span class="result-value" id="sugarToAdd">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">🍯 1:1 syrup sugar reference (50 Bx):</span>
-                <span class="result-value" id="simpleSyrupRef">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">🍯 2:1 rich syrup sugar ref (≈66%):</span>
-                <span class="result-value" id="richSyrupRef">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">🌿 Acacia gum (0.1 × juice weight ÷ 2):</span>
-                <span class="result-value" id="gumAmount">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">🍋 Citric acid (0.003 × final syrup):</span>
-                <span class="result-value" id="acidAmount">— g</span>
-            </div>
-            <div class="result-item">
-                <span class="result-label">✨ Ascorbic acid (0.3% × final syrup):</span>
-                <span class="result-value" id="ascorbicAmount">— g</span>
+        
+        <div class="calculator-card">
+            <div class="card-header">2: Assemble Your Syrup</div>
+            <div class="card-body">
+                <div class="results">
+                    <div class="result-box">
+                        <div class="result-title">FOR 1:1 SYRUP</div>
+                        <div class="result-value" id="sugar1to1">Add 0 grams sugar</div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-title">FOR 2:1 SYRUP</div>
+                        <div class="result-value" id="sugar2to1">Add 0 grams sugar</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="finalSyrup">For Gum Syrup - weigh Syrup after sugar is added</label>
+                    <input type="number" id="finalSyrup" class="final-syrup-input" placeholder="Enter final syrup weight" min="0" inputmode="decimal">
+                    <div class="info-text">Note: This is used for citric acid calculation only</div>
+                </div>
+                
+                <div class="results">
+                    <div class="result-box">
+                        <div class="result-title">Acacia gum to add:</div>
+                        <div class="result-value" id="acaciaGum">0 grams</div>
+                        <div class="info-text">Calculated as 5% of liquid weight</div>
+                    </div>
+                    
+                    <div class="result-box">
+                        <div class="result-title">Citric acid to add (3g per liter):</div>
+                        <div class="result-value" id="citricAcid">0 grams</div>
+                        <div class="info-text">Calculated based on final syrup weight</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Subtle Attribution -->
-    <div class="attribution">
-        <div class="instagram-handle">
-            <a href="https://www.instagram.com/suraj.gurung87/" target="_blank">@suraj.gurung87</a>
+        
+        <div class="calculator-card">
+            <div class="card-header" id="gumMethodHeader">
+                <span>Preparation Method for GUM SYRUP</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-body">
+                <div class="method-box" id="gumMethodBox">
+                    <div class="method-title">Steps:</div>
+                    <ul class="method-steps">
+                        <li>Get all the ingredients ready</li>
+                        <li>Add the juice to the blender on low speed</li>
+                        <li>Add Acacia Gum and Blend on low speed</li>
+                        <li>Add sugar and Blend on Low</li>
+                        <li>Weigh the final volume of syrup and add the citric acid</li>
+                        <li>Bottle and keep in refrigerator for 2 weeks</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        
+        <div class="calculator-card">
+            <div class="card-header" id="regularMethodHeader">
+                <span>Preparation Method for Regular Syrup</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="card-body">
+                <div class="method-box" id="regularMethodBox">
+                    <div class="method-title">Steps:</div>
+                    <ul class="method-steps">
+                        <li>Heat your liquid and the additional sugar over gentle heat on a stovetop or in a microwave, and stir just until the sugar is dissolved and everything is combined</li>
+                        <li>Allow the mixture to cool at room temperature, then portion into squeeze bottles, and clearly label and date all bottles</li>
+                        <li>Store 1:1 syrups in the refrigerator for up to 1 month and 2:1 syrups for up to 6 weeks</li>
+                        <li>Check for signs of spoilage before use. When in doubt, always discard and make a new batch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subtle Attribution -->
+        <div class="attribution">
+            <div>  Beverage Solutions © </div>
+           <div class="instagram-handle">
+                <a href="https://www.instagram.com/suraj.gurung87/" target="_blank">@suraj.gurung87</a>
+            </div>
 
-<script>
-    (function() {
-        // DOM elements
-        const juiceWeightInput = document.getElementById('juiceWeight');
+   
+    <script>
+        // Get input elements
+        const liquidWeightInput = document.getElementById('liquidWeight');
         const initialBrixInput = document.getElementById('initialBrix');
-        const targetBrixInput = document.getElementById('targetBrix');
-        const finalSyrupManualInput = document.getElementById('finalSyrupManual');
-        const calculateBtn = document.getElementById('calculateBtn');
-
-        // result spans
-        const existingSugarSpan = document.getElementById('existingSugar');
-        const waterMassSpan = document.getElementById('waterMass');
-        const sugarToAddSpan = document.getElementById('sugarToAdd');
-        const simpleSyrupRefSpan = document.getElementById('simpleSyrupRef');
-        const richSyrupRefSpan = document.getElementById('richSyrupRef');
-        const gumAmountSpan = document.getElementById('gumAmount');
-        const acidAmountSpan = document.getElementById('acidAmount');
-        const ascorbicAmountSpan = document.getElementById('ascorbicAmount');
-
-        // Helper: format grams with commas & decimals
-        function formatGrams(value) {
-            if (value === null || isNaN(value) || value === undefined) return '— g';
-            let rounded = Math.round(value * 100) / 100;
-            if (Math.abs(rounded - Math.round(rounded)) < 0.01) {
-                return Math.round(rounded).toLocaleString() + " g";
-            } else {
-                return rounded.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " g";
-            }
+        const finalSyrupInput = document.getElementById('finalSyrup');
+        
+        // Get result elements
+        const sugar1to1Element = document.getElementById('sugar1to1');
+        const sugar2to1Element = document.getElementById('sugar2to1');
+        const acaciaGumElement = document.getElementById('acaciaGum');
+        const citricAcidElement = document.getElementById('citricAcid');
+        
+        // Method toggle elements
+        const gumMethodHeader = document.getElementById('gumMethodHeader');
+        const gumMethodBox = document.getElementById('gumMethodBox');
+        const regularMethodHeader = document.getElementById('regularMethodHeader');
+        const regularMethodBox = document.getElementById('regularMethodBox');
+        
+        // Add event listeners to inputs
+        liquidWeightInput.addEventListener('input', calculateAll);
+        initialBrixInput.addEventListener('input', calculateAll);
+        finalSyrupInput.addEventListener('input', calculateAll);
+        
+        // Add event listeners to method headers
+        gumMethodHeader.addEventListener('click', () => {
+            gumMethodBox.classList.toggle('active');
+            gumMethodHeader.classList.toggle('active');
+        });
+        
+        regularMethodHeader.addEventListener('click', () => {
+            regularMethodBox.classList.toggle('active');
+            regularMethodHeader.classList.toggle('active');
+        });
+        
+        // Touch device optimization
+        document.addEventListener('touchstart', function() {}, { passive: true });
+        
+        // Calculate all requirements
+        function calculateAll() {
+            calculateSyrup();
+            calculateGumSyrup();
         }
-
-        // Compute sugar to add to hit target Brix
-        function computeSugarToAdd(juiceWeight, initBrix, targetBrix) {
-            if (juiceWeight <= 0 || initBrix < 0 || targetBrix <= 0 || targetBrix >= 100) {
-                if (targetBrix === 100) return Infinity;
-                return NaN;
-            }
-            const preSugar = juiceWeight * (initBrix / 100);
-            const numerator = (targetBrix / 100) * juiceWeight - preSugar;
-            const denominator = 1 - (targetBrix / 100);
-            if (denominator <= 0) return NaN;
-            let sugarAdd = numerator / denominator;
-            if (sugarAdd < 0) sugarAdd = 0;
-            return sugarAdd;
-        }
-
-        // 1:1 simple syrup sugar addition reference
-        function computeSimpleSyrupRef(juiceWeight, preSugar) {
-            if (juiceWeight <= 0) return 0;
-            let val = juiceWeight - (preSugar * 2);
-            return val < 0 ? 0 : val;
-        }
-
-        // 2:1 rich syrup reference
-        function computeRichSyrupRef(juiceWeight, preSugar) {
-            if (juiceWeight <= 0) return 0;
-            let val = (juiceWeight * 2) - (preSugar * 3);
-            return val < 0 ? 0 : val;
-        }
-
-        // Acacia gum: 0.1 × initial juice weight ÷ 2
-        function computeAcaciaGum(juiceWeight) {
-            if (juiceWeight <= 0) return 0;
-            return (0.1 * juiceWeight) / 2;
-        }
-
-        // Citric acid: 0.003 × final syrup weight
-        function computeCitricAcid(finalSyrupWeight) {
-            if (finalSyrupWeight <= 0) return 0;
-            return finalSyrupWeight * 0.003;
-        }
-
-        // Ascorbic acid: 0.3% × final syrup weight => 0.003 × finalSyrupWeight
-        function computeAscorbicAcid(finalSyrupWeight) {
-            if (finalSyrupWeight <= 0) return 0;
-            return finalSyrupWeight * 0.003;
-        }
-
-        // Check if final syrup weight is provided (valid positive number)
-        function isFinalWeightProvided() {
-            let manualFinal = parseFloat(finalSyrupManualInput.value);
-            return !isNaN(manualFinal) && manualFinal > 0;
-        }
-
-        // Master update: reads all inputs, calculates, displays
-        function updateAllCalculations() {
-            // Get base inputs - allow empty values (treat as invalid)
-            let juiceWeightRaw = juiceWeightInput.value.trim();
-            let initBrixRaw = initialBrixInput.value.trim();
-            let targetBrixRaw = targetBrixInput.value.trim();
+        
+        // Calculate syrup requirements
+        function calculateSyrup() {
+            const liquidWeight = parseFloat(liquidWeightInput.value) || 0;
+            const initialBrix = parseFloat(initialBrixInput.value) || 0;
             
-            let juiceWeight = juiceWeightRaw === "" ? NaN : parseFloat(juiceWeightRaw);
-            let initBrix = initBrixRaw === "" ? NaN : parseFloat(initBrixRaw);
-            let targetBrix = targetBrixRaw === "" ? NaN : parseFloat(targetBrixRaw);
+            // For 1:1 syrup (equal parts sugar and liquid by weight)
+            const sugarFor1to1 = liquidWeight - (liquidWeight * initialBrix / 100);
+            sugar1to1Element.textContent = `Add ${Math.max(0, Math.round(sugarFor1to1))} grams sugar`;
             
-            // Validation - only calculate sugar-related fields if all three are valid
-            const hasValidSugarInputs = !isNaN(juiceWeight) && juiceWeight > 0 && 
-                                        !isNaN(initBrix) && initBrix >= 0 && 
-                                        !isNaN(targetBrix) && targetBrix > 0 && targetBrix <= 100;
-            
-            let preSugar = 0;
-            let waterMass = 0;
-            let sugarAdd = 0;
-            let simpleRef = 0;
-            let richRef = 0;
-            
-            if (hasValidSugarInputs) {
-                preSugar = juiceWeight * (initBrix / 100);
-                waterMass = juiceWeight - preSugar;
-                sugarAdd = computeSugarToAdd(juiceWeight, initBrix, targetBrix);
-                if (isNaN(sugarAdd) || !isFinite(sugarAdd)) sugarAdd = 0;
-                if (sugarAdd < 0) sugarAdd = 0;
-                simpleRef = computeSimpleSyrupRef(juiceWeight, preSugar);
-                richRef = computeRichSyrupRef(juiceWeight, preSugar);
-            }
-            
-            // Update sugar-related displays
-            if (hasValidSugarInputs) {
-                existingSugarSpan.innerText = formatGrams(preSugar);
-                waterMassSpan.innerText = formatGrams(waterMass);
-                sugarToAddSpan.innerText = formatGrams(sugarAdd);
-                simpleSyrupRefSpan.innerText = formatGrams(simpleRef);
-                richSyrupRefSpan.innerText = formatGrams(richRef);
-            } else {
-                existingSugarSpan.innerText = '— g';
-                waterMassSpan.innerText = '— g';
-                sugarToAddSpan.innerText = '— g';
-                simpleSyrupRefSpan.innerText = '— g';
-                richSyrupRefSpan.innerText = '— g';
-            }
-            
-            // Handle Gum, Citric Acid, Ascorbic Acid - ONLY if final syrup weight is provided
-            const finalWeightProvided = isFinalWeightProvided();
-            let finalWeight = 0;
-            
-            if (finalWeightProvided) {
-                finalWeight = parseFloat(finalSyrupManualInput.value);
-                // Ensure final weight is positive
-                if (finalWeight > 0) {
-                    // Calculate gum ONLY if final weight is provided (and juice weight is valid for gum formula)
-                    let gumValue = 0;
-                    if (!isNaN(juiceWeight) && juiceWeight > 0) {
-                        gumValue = computeAcaciaGum(juiceWeight);
-                    }
-                    const citricValue = computeCitricAcid(finalWeight);
-                    const ascorbicValue = computeAscorbicAcid(finalWeight);
-                    
-                    gumAmountSpan.innerText = formatGrams(gumValue);
-                    acidAmountSpan.innerText = formatGrams(citricValue);
-                    ascorbicAmountSpan.innerText = formatGrams(ascorbicValue);
-                    
-                    // Remove zero-value styling if needed
-                    gumAmountSpan.classList.remove('zero-value');
-                    acidAmountSpan.classList.remove('zero-value');
-                    ascorbicAmountSpan.classList.remove('zero-value');
-                } else {
-                    // Final weight is invalid (<=0)
-                    gumAmountSpan.innerText = '0 g';
-                    acidAmountSpan.innerText = '0 g';
-                    ascorbicAmountSpan.innerText = '0 g';
-                    gumAmountSpan.classList.add('zero-value');
-                    acidAmountSpan.classList.add('zero-value');
-                    ascorbicAmountSpan.classList.add('zero-value');
-                }
-            } else {
-                // Final syrup weight NOT provided - show zeros with note styling
-                gumAmountSpan.innerText = '0 g';
-                acidAmountSpan.innerText = '0 g';
-                ascorbicAmountSpan.innerText = '0 g';
-                gumAmountSpan.classList.add('zero-value');
-                acidAmountSpan.classList.add('zero-value');
-                ascorbicAmountSpan.classList.add('zero-value');
-            }
+            // For 2:1 syrup (twice as much sugar as liquid by weight)
+            const sugarFor2to1 = (2 * liquidWeight) - (liquidWeight * initialBrix / 100);
+            sugar2to1Element.textContent = `Add ${Math.max(0, Math.round(sugarFor2to1))} grams sugar`;
         }
-
-        // Set target brix via preset buttons
-        function setupPresets() {
-            const presetBtns = document.querySelectorAll('.preset-btn');
-            presetBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const brixVal = parseFloat(btn.getAttribute('data-brix'));
-                    if (!isNaN(brixVal) && brixVal > 0) {
-                        targetBrixInput.value = brixVal;
-                        updateAllCalculations();
-                    }
-                });
-            });
-        }
-
-        // Event binding: button click + realtime input
-        function bindEvents() {
-            calculateBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                updateAllCalculations();
-            });
+        
+        // Calculate gum syrup requirements
+        function calculateGumSyrup() {
+            const liquidWeight = parseFloat(liquidWeightInput.value) || 0;
+            const finalSyrup = parseFloat(finalSyrupInput.value) || 0;
             
-            const inputs = [juiceWeightInput, initialBrixInput, targetBrixInput, finalSyrupManualInput];
-            inputs.forEach(inp => {
-                inp.addEventListener('input', () => {
-                    updateAllCalculations();
-                });
-                inp.addEventListener('change', () => {
-                    updateAllCalculations();
-                });
-            });
+            // Acacia gum calculation (5% of liquid weight)
+            const acaciaGum = liquidWeight * 0.05;
+            acaciaGumElement.textContent = `${Math.round(acaciaGum)} grams`;
+            
+            // Citric acid calculation (3g per liter, so 0.003g per gram)
+            const citricAcid = finalSyrup * 0.003;
+            citricAcidElement.textContent = `${citricAcid.toFixed(2)} grams`;
         }
-
-        // Initialize with empty fields - no default numbers
-        function initDefaults() {
-            // Ensure all inputs are empty by default
-            juiceWeightInput.value = '';
-            initialBrixInput.value = '';
-            targetBrixInput.value = '';
-            finalSyrupManualInput.value = '';
-            updateAllCalculations();
-        }
-
-        setupPresets();
-        bindEvents();
-        initDefaults();
-    })();
-</script>
+   
+       
+    </script>
 </body>
 </html>
